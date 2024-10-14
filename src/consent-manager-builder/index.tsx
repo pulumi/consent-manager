@@ -359,13 +359,6 @@ export default class ConsentManagerBuilder extends Component<Props, State> {
 
       const newDestinations = getNewDestinations(destinations, destinationPreferences)
 
-      if (
-        prevState.havePreferencesChanged ||
-        newDestinations.length > 0 ||
-        typeof newPreferences === 'boolean'
-      ) {
-        shouldReload = true
-      }
       savePreferences({
         destinationPreferences,
         customPreferences,
