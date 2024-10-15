@@ -37,7 +37,6 @@ export default function conditionallyLoadAnalytics({
   destinations,
   destinationPreferences,
   isConsentRequired,
-  shouldReload = true,
   devMode = false,
   defaultDestinationBehavior,
   categoryPreferences
@@ -71,15 +70,6 @@ export default function conditionallyLoadAnalytics({
       isAnythingEnabled = true
     }
     integrations[destination.id] = isEnabled
-  }
-
-  // Reload the page if the trackers have already been initialised so that
-  // the user's new preferences can take affect
-  if (wd.analytics && wd.analytics.initialized) {
-    if (shouldReload) {
-      window.location.reload()
-    }
-    return
   }
 
   if (devMode) {
